@@ -15,8 +15,8 @@ Di bawah ini adalah dokumentasi latihan yang telah saya kerjakan, mencakup kode 
   Menggunakan model yang dilatih khusus pada tweet untuk menganalisis sentimen kalimat yang mengandung hashtag.
 </p>
 
-```python
 # --- CODE ---
+```python
 # Model: cardiffnlp/twitter-roberta-base-sentiment
 specific_model = pipeline(model="cardiffnlp/twitter-roberta-base-sentiment")
 tweet = "I finally finished my project! It was hard work but the result is amazing. #proud"
@@ -25,13 +25,13 @@ print(results)
 ```
 
 # --- RESULT ---
-# [{'label': 'LABEL_2', 'score': 0.9850379824638367}]
-# Note: LABEL_2 corresponds to Positive.
+[{'label': 'LABEL_2', 'score': 0.9850379824638367}]
+Note: LABEL_2 corresponds to Positive.
 
 # --- ANALYSIS ---
-# Model berhasil mengidentifikasi kalimat sebagai positif dengan skor keyakinan yang sangat tinggi (sekitar 98.5%). 
-# Meskipun kalimat mengandung frasa "hard work" (yang bisa bermakna negatif), model dengan tepat menafsirkan 
-# konteks keseluruhan dan hashtag "#proud" sebagai sentimen positif.
+1. Model berhasil mengidentifikasi kalimat sebagai positif dengan skor keyakinan yang sangat tinggi (sekitar 98.5%). 
+2.  Meskipun kalimat mengandung frasa "hard work" (yang bisa bermakna negatif), model dengan tepat menafsirkan 
+3. konteks keseluruhan dan hashtag "#proud" sebagai sentimen positif.
 
 #### 2. Exercise 2 - Topic Classification
 
