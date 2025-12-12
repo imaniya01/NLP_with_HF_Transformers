@@ -25,8 +25,10 @@ print(results)
 ```
 
 ##### RESULT
+```
 [{'label': 'LABEL_2', 'score': 0.9850379824638367}]
 Note: LABEL_2 corresponds to Positive.
+```
 
 ##### ANALYSIS
 1. Model berhasil mengidentifikasi kalimat sebagai positif dengan skor keyakinan yang sangat tinggi (sekitar 98.5%). 
