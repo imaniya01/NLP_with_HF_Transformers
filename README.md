@@ -15,7 +15,7 @@ Di bawah ini adalah dokumentasi latihan yang telah saya kerjakan, mencakup kode 
   Menggunakan model yang dilatih khusus pada tweet untuk menganalisis sentimen kalimat yang mengandung hashtag.
 </p>
 
-# --- CODE ---
+*CODE*
 ```python
 # Model: cardiffnlp/twitter-roberta-base-sentiment
 specific_model = pipeline(model="cardiffnlp/twitter-roberta-base-sentiment")
