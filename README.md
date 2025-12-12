@@ -36,7 +36,6 @@ print(results)
 
 <p>Menggunakan <i>Zero-Shot Classification</i> untuk mengkategorikan kalimat tentang peraturan pajak ke dalam topik tertentu tanpa pelatihan sebelumnya. </p>
 
-```python
 # --- CODE ---
 # Model: facebook/bart-large-mnli
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
@@ -61,7 +60,6 @@ print(result)
 
 <p> Menggunakan model GPT-2 untuk melengkapi kalimat mengenai masa depan kecerdasan buatan (AI). </p>
 
-```python
 # --- CODE ---
 # Model: gpt2
 generator = pipeline('text-generation', model='gpt2')
@@ -82,7 +80,6 @@ generated_text = generator(start_sentence, max_length=50, num_return_sequences=3
 
 <p> Mengekstrak entitas (Orang, Organisasi, Lokasi) dari kalimat biografi kustom. </p>
 
-```python
 # --- CODE ---
 # Model: dbmdz/bert-large-cased-finetuned-conll03-english
 ner = pipeline("ner", model="dbmdz/bert-large-cased-finetuned-conll03-english", grouped_entities=True)
@@ -101,7 +98,6 @@ ner("My name is Imaniya, I am a student at UNESA, majoring in Informatics Engine
 
 <p> Mengekstrak jawaban langsung dari konteks teks mengenai Candi Borobudur. </p>
 
-```python
 # --- CODE ---
 # Model: distilbert-base-cased-distilled-squad
 qa_model = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
@@ -123,7 +119,6 @@ qa_model(question=question, context=context)
 
 <p> Meringkas paragraf teknis mengenai bahasa pemrograman Python. </p>
 
-```python
 # --- CODE ---
 # Model: sshleifer/distilbart-cnn-12-6
 summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
@@ -142,7 +137,6 @@ print(summary[0]['summary_text'])
 
 <p> Menerjemahkan kalimat bahasa Inggris ke bahasa Jerman menggunakan model T5. </p>
 
-```python
 # --- CODE ---
 # Model: t5-small (translation_en_to_de)
 translator = pipeline("translation_en_to_de", model="t5-small")
