@@ -82,80 +82,92 @@ generated_text = generator(start_sentence, max_length=50, num_return_sequences=3
 1. Model GPT-2 menghasilkan kelanjutan kalimat yang koheren dan benar secara tata bahasa. 
 2. Model memberikan berbagai perspektif, mulai dari implementasi teknis (menggabungkan data) hingga pernyataan optimis umum ("certainly bright").
 
-#### 4. Exercise 4 - Name Entity Recognition (NER
+#### 4. Exercise 4 - Name Entity Recognition (NER)
 
 <p> Mengekstrak entitas (Orang, Organisasi, Lokasi) dari kalimat biografi kustom. </p>
 
-# --- CODE ---
-# Model: dbmdz/bert-large-cased-finetuned-conll03-english
+##### CODE
+Model: dbmdz/bert-large-cased-finetuned-conll03-english
+```
 ner = pipeline("ner", model="dbmdz/bert-large-cased-finetuned-conll03-english", grouped_entities=True)
 ner("My name is Imaniya, I am a student at UNESA, majoring in Informatics Engineering.")
+```
 
-# --- RESULT ---
-# Imaniya: Identified as PER (Person)
-# UNESA: Identified as ORG (Organization)
+##### RESULT
+```
+Imaniya: Identified as PER (Person)
+UNESA: Identified as ORG (Organization)
+```
 
-# --- ANALYSIS ---
-# Model secara akurat mengekstrak "Imaniya" sebagai nama orang dan "UNESA" sebagai organisasi. 
-# Hal ini menunjukkan kemampuan model untuk membedakan kata benda khusus (proper nouns) 
-# dan mengklasifikasikannya dengan benar dalam konteks kalimat.
+##### ANALYSIS 
+Model secara akurat mengekstrak "Imaniya" sebagai nama orang dan "UNESA" sebagai organisasi. Hal ini menunjukkan kemampuan model untuk membedakan kata benda khusus (proper nouns) dan mengklasifikasikannya dengan benar dalam konteks kalimat.
 
 #### 5. Exercise 5 - Question Answering
 
 <p> Mengekstrak jawaban langsung dari konteks teks mengenai Candi Borobudur. </p>
 
-# --- CODE ---
-# Model: distilbert-base-cased-distilled-squad
+##### CODE
+Model: distilbert-base-cased-distilled-squad
+```
 qa_model = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
 question = "Where is Borobudur located?"
 context = """Borobudur is a 9th-century Mahayana Buddhist temple in Magelang Regency,
 not far from the town of Muntilan, in Central Java, Indonesia.
 It is the world's largest Buddhist temple"""
 qa_model(question=question, context=context)
+```
 
-# --- RESULT ---
-# {'score': ..., 'start': ..., 'end': ..., 'answer': 'Magelang Regency'}
+##### RESULT
+```
+{'score': ..., 'start': ..., 'end': ..., 'answer': 'Magelang Regency'}
+```
 
-# --- ANALYSIS ---
-# Model dengan tepat menunjukkan lokasi spesifik "Magelang Regency" dari teks yang disediakan. 
-# Model mengabaikan detail geografis tambahan untuk memberikan jawaban yang paling langsung 
-# terhadap pertanyaan "Where".
+##### ANALYSIS
+1. Model dengan tepat menunjukkan lokasi spesifik "Magelang Regency" dari teks yang disediakan. 
+2. Model mengabaikan detail geografis tambahan untuk memberikan jawaban yang paling langsung terhadap pertanyaan "Where".
 
 #### 6. Exercise 6 - Text Summarization
 
 <p> Meringkas paragraf teknis mengenai bahasa pemrograman Python. </p>
 
-# --- CODE ---
-# Model: sshleifer/distilbart-cnn-12-6
+##### CODE
+```
+Model: sshleifer/distilbart-cnn-12-6
 summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
 long_text = """Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms..."""
 summary = summarizer(long_text, max_length=60, min_length=30, do_sample=False)
 print(summary[0]['summary_text'])
+```
 
-# --- RESULT ---
-# "Python is a high-level, general-purpose programming language"
+##### RESULT
+```
+"Python is a high-level, general-purpose programming language"
+```
 
-# --- ANALYSIS ---
-# Summarizer berhasil meringkas paragraf menjadi definisi yang paling esensial. 
-# Model menangkap materi inti secara ringkas, menghapus penjelasan mendetail untuk memenuhi batasan panjang teks.
+##### ANALYSIS
+1. Summarizer berhasil meringkas paragraf menjadi definisi yang paling esensial. 
+2. Model menangkap materi inti secara ringkas, menghapus penjelasan mendetail untuk memenuhi batasan panjang teks.
 
 #### 7. Exercise 7 - Translation
 
 <p> Menerjemahkan kalimat bahasa Inggris ke bahasa Jerman menggunakan model T5. </p>
 
-# --- CODE ---
-# Model: t5-small (translation_en_to_de)
+##### CODE
+Model: t5-small (translation_en_to_de)
+```
 translator = pipeline("translation_en_to_de", model="t5-small")
 english_text = "I am learning how to use Hugging Face Transformers today."
 german_translation = translator(english_text)
 print(f"Jerman: {german_translation[0]['translation_text']}")
+```
 
-# --- RESULT ---
-# Jerman: Ich lerne heute, wie man Hugging Face Transformers benutzt.
+##### RESULT
+```
+Jerman: Ich lerne heute, wie man Hugging Face Transformers benutzt.
+```
 
-# --- ANALYSIS ---
-# Model T5 berhasil menangani tugas penerjemahan dari Inggris ke Jerman, mengonversi struktur kalimat 
-# ke bahasa target sambil tetap mempertahankan makna asli dan konteks teknisnya.
+##### ANALYSIS 
+Model T5 berhasil menangani tugas penerjemahan dari Inggris ke Jerman, mengonversi struktur kalimat ke bahasa target sambil tetap mempertahankan makna asli dan konteks teknisnya.
 
 ### Tools Used
 
