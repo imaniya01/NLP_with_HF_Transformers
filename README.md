@@ -22,6 +22,7 @@ specific_model = pipeline(model="cardiffnlp/twitter-roberta-base-sentiment")
 tweet = "I finally finished my project! It was hard work but the result is amazing. #proud"
 results = specific_model(tweet)
 print(results)
+```python
 
 # --- RESULT ---
 # [{'label': 'LABEL_2', 'score': 0.9850379824638367}]
