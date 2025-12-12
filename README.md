@@ -32,52 +32,55 @@ Note: LABEL_2 corresponds to Positive.
 
 ##### ANALYSIS
 1. Model berhasil mengidentifikasi kalimat sebagai positif dengan skor keyakinan yang sangat tinggi (sekitar 98.5%). 
-2.  Meskipun kalimat mengandung frasa "hard work" (yang bisa bermakna negatif), model dengan tepat menafsirkan 
-3. konteks keseluruhan dan hashtag "#proud" sebagai sentimen positif.
+2.  Meskipun kalimat mengandung frasa "hard work" (yang bisa bermakna negatif), model dengan tepat menafsirkan konteks keseluruhan dan hashtag "#proud" sebagai sentimen positif.
 
 #### 2. Exercise 2 - Topic Classification
 
 <p>Menggunakan <i>Zero-Shot Classification</i> untuk mengkategorikan kalimat tentang peraturan pajak ke dalam topik tertentu tanpa pelatihan sebelumnya. </p>
 
-# --- CODE ---
-# Model: facebook/bart-large-mnli
+##### CODE
+Model: facebook/bart-large-mnli
+```
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 sentence = "The government announced new tax regulations for digital businesses starting next year."
 labels = ["politics", "economy", "sports", "health"]
 result = classifier(sentence, candidate_labels=labels)
 print(result)
+```
 
-# --- RESULT ---
-# {
-#   'sequence': 'The government announced new tax regulations for digital businesses starting next year.', 
-#   'labels': ['economy', 'politics', 'health', 'sports'], 
-#   'scores': [0.68, 0.20, 0.08, 0.04]
-# }
+##### RESULT 
+```
+{
+   'sequence': 'The government announced new tax regulations for digital businesses starting next year.', 
+   'labels': ['economy', 'politics', 'health', 'sports'], 
+   'scores': [0.68, 0.20, 0.08, 0.04]
+}
+```
 
-# --- ANALYSIS ---
-# Classifier dengan tepat mengidentifikasi "economy" sebagai topik yang paling relevan dengan skor tertinggi (~0.68), 
-# diikuti oleh politics. Ini menunjukkan kemampuan model untuk memahami konteks kata kunci seperti "tax" dan "business" 
-# dan memetakannya ke label kandidat yang diberikan.
+###### ANALYSIS
+Classifier dengan tepat mengidentifikasi "economy" sebagai topik yang paling relevan dengan skor tertinggi (~0.68) dan diikuti oleh politics. Ini menunjukkan kemampuan model untuk memahami konteks kata kunci seperti "tax" dan "business" dan memetakannya ke label kandidat yang diberikan.
 
 #### 3. Exercise 3 - Text Generation Model
 
 <p> Menggunakan model GPT-2 untuk melengkapi kalimat mengenai masa depan kecerdasan buatan (AI). </p>
 
-# --- CODE ---
-# Model: gpt2
+##### CODE
+Model: gpt2
+```
 generator = pipeline('text-generation', model='gpt2')
 start_sentence = "The future of Artificial Intelligence is"
 generated_text = generator(start_sentence, max_length=50, num_return_sequences=3)
+```
+###### RESULT
+```
+1. "...to take the computer-based AI and combine it with the data collected from humans..."
+2. "The future of Artificial Intelligence is certainly bright."
+3. "...will become the most popular topic of discussion..."
+```
 
-# --- RESULT (Variations) ---
-# 1. "...to take the computer-based AI and combine it with the data collected from humans..."
-# 2. "The future of Artificial Intelligence is certainly bright."
-# 3. "...will become the most popular topic of discussion..."
-
-# --- ANALYSIS ---
-# Model GPT-2 menghasilkan kelanjutan kalimat yang koheren dan benar secara tata bahasa. 
-# Model memberikan berbagai perspektif, mulai dari implementasi teknis (menggabungkan data) 
-# hingga pernyataan optimis umum ("certainly bright").
+##### ANALYSIS
+1. Model GPT-2 menghasilkan kelanjutan kalimat yang koheren dan benar secara tata bahasa. 
+2. Model memberikan berbagai perspektif, mulai dari implementasi teknis (menggabungkan data) hingga pernyataan optimis umum ("certainly bright").
 
 #### 4. Exercise 4 - Name Entity Recognition (NER
 
